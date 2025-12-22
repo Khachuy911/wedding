@@ -1,8 +1,8 @@
 // app/api/auth/login/route.ts
-import { NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
   try {
@@ -34,7 +34,8 @@ export async function POST(req: NextRequest) {
         userName: user.userName,
       },
     })
-  } catch {
+  } catch (err) {
+    console.log(err)
     return NextResponse.json({ error: "Đang nhập không thành công!" }, { status: 500 })
   }
 }

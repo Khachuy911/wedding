@@ -13,14 +13,14 @@ export async function POST(req: NextRequest) {
       name: string
       shortName: string
     }
-    
+
     const existing = await prisma.user.findUnique({ where: { userName } })
     if (existing) {
       return NextResponse.json({ error: "Tên tài khoản đã tồn tại" }, { status: 400 })
     }
-    
+
     const hashedPassword = await bcrypt.hash(password, 10)
-    
+
     const user = await prisma.user.create({
       data: {
         id: generateId(),
