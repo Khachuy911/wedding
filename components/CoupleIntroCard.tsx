@@ -1,5 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import React from "react"
 
 type CoupleIntroCardProps = {
@@ -54,11 +55,12 @@ const CoupleIntroCard: React.FC<CoupleIntroCardProps> = ({
           transition={{ duration: 1, ease: "easeOut" }}
           className="mx-auto w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-[6px] border-white shadow-[0_0_25px_rgba(0,0,0,0.15)] mb-6 relative"
         >
-          {imageSrc && <img
+          {imageSrc && <Image
             src={imageSrc}
             alt={name}
+            fill
             className="object-cover"
-          // sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 768px) 176px, 208px"
           />
           }
           <div className="absolute inset-0 rounded-full ring-2 ring-white/70 ring-offset-4 ring-offset-transparent"></div>

@@ -186,7 +186,8 @@ const Story = ({ storyEvents }: { storyEvents: any[] }) => {
                       <div
                         className={`flex items-center justify-center shadow-lg`}
                       >
-                        <img src={event.image} className="rounded" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={event.image} alt={event.title || "Event image"} className="rounded" />
                       </div>
                     </div>
                   }

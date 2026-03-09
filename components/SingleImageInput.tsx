@@ -64,6 +64,7 @@ export const SingleImageInput: React.FC<SingleImageInputProps> = ({ label, fileU
             <div className={`flex items-center space-x-4 rounded-lg border p-3 ${isUploading ? 'bg-indigo-50' : 'bg-gray-50'}`}>
                 {/* Dùng previewUrl đã được quản lý */}
                 {previewUrl && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                         src={previewUrl}
                         alt={`${label} Preview`}

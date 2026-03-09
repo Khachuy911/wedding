@@ -1,5 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import FloatingHearts from "../FloatingIcons"
 
 const QrCard = ({ data = {}, delay = 0 }: { data: any, delay: number }) => {
@@ -18,10 +19,12 @@ const QrCard = ({ data = {}, delay = 0 }: { data: any, delay: number }) => {
       </h3>
 
       <div className="relative w-full aspect-square bg-gray-100 rounded-xl overflow-hidden mb-3 border-4 border-white shadow-inner group">
-        <img
+        <Image
           src={data?.qrCodeUrl}
           alt={`QR Code ${data?.title}`}
-          className="w-full h-full object-cover p-2 transform group-hover:scale-[1.03] transition duration-500"
+          fill
+          className="object-cover p-2 transform group-hover:scale-[1.03] transition duration-500"
+          sizes="(max-width: 768px) 100vw, 400px"
         />
         <div className="absolute inset-0 bg-black/5 flex items-center justify-center text-white font-bold opacity-0 group-hover:opacity-100 transition duration-300">
           <span className="p-1.5 bg-black/70 rounded text-xs">Quét để chuyển khoản</span>

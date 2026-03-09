@@ -127,6 +127,7 @@ const WeddingAlbum = ({ images }: { images: string[] }) => {
                 custom={i}
                 className="flex items-start"
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={src}
                   alt={`wedding-${i}`}
@@ -171,6 +172,7 @@ const WeddingAlbum = ({ images }: { images: string[] }) => {
             <X className="w-5 h-5" />
           </button>
 
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             {...handlers}
             src={images[current]}
@@ -202,6 +204,7 @@ const WeddingAlbum = ({ images }: { images: string[] }) => {
                 }}
               >
                 {images.map((src, i) => (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     key={i}
                     ref={i === current ? currentThumb : null}

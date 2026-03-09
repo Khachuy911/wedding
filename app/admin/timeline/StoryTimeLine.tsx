@@ -190,6 +190,7 @@ const StoryTimeLine = () => {
                                     {(item.image) && (
                                         <>
                                             <div className="relative">
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                                 <img
                                                     src={item.image instanceof File ? URL.createObjectURL(item.image) : item.image as string}
                                                     alt={`Timeline Image ${index + 1}`}
@@ -296,6 +297,7 @@ const StoryTimeLine = () => {
                         <label className="text-sm text-gray-600 block pt-2">🖼️ Ảnh đính kèm:</label>
                         <div className="flex items-center space-x-3">
                             {(newItem.image) && (
+                                /* eslint-disable-next-line @next/next/no-img-element */
                                 <img
                                     src={URL.createObjectURL(newItem.image as File)}
                                     alt="New Timeline Image Preview"

@@ -227,6 +227,7 @@ export default function DashboardPage() {
                   </label>
                   <div className="flex items-center space-x-4 rounded-lg bg-gray-50 border p-3">
                     {(formData.avatarFile || formData.avatar) && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
                       <img
                         src={
                           formData.avatarFile
@@ -374,6 +375,7 @@ export default function DashboardPage() {
                   </label>
                   <div className="flex items-center space-x-4 rounded-lg bg-gray-50 border p-3">
                     {(formData.qrCodeFile || formData.qrCodeUrl) && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
                       <img
                         src={
                           formData.qrCodeFile

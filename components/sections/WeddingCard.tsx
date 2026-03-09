@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -254,10 +255,12 @@ const WeddingCard = ({ data }: { data: any }) => {
             className="mx-auto w-34 h-34 rounded-full overflow-hidden 
             border-[2px] border-white shadow-[0_0_15px_rgba(0,0,0,0.1)] relative"
           >
-            <img
-              src={"/avatar/e01cxc"} // Thay đổi nếu bạn có ảnh icon riêng
+            <Image
+              src={"/avatar/e01cxc"}
               alt={"Avatar"}
-              className="object-cover w-full h-full"
+              fill
+              className="object-cover"
+              sizes="136px"
             />
           </motion.div>
 
