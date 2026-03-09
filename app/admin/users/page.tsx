@@ -336,7 +336,6 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: any) => (
 
 const UserModal = ({ isOpen, onClose, user, onChange, onSave }: any) => {
   if (!isOpen || !user) return null
-
   const isNew = !user.id
 
   return (

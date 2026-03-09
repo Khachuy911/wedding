@@ -12,7 +12,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [user, setUser] = useState<AdminUser>(null)
   const [showModal, setShowModal] = useState(false)
   const [error, setError] = useState("")
-
   useEffect(() => {
     appWeddingClient
       .me()
@@ -46,6 +45,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       setShowModal(false)
 
       toast.success("Đăng nhập thành công!")
+      window.location.reload()
     } catch (data: any) {
       setError(data?.response?.data?.error || "Đăng nhập thất bại!")
       toast.error(data?.response?.data?.error || "Đăng nhập thất bại!")

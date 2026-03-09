@@ -25,6 +25,7 @@ const WeddingCard = ({ data }: { data: any }) => {
     fatherBride: "", // Thêm trường dữ liệu Cha cô dâu
     motherBride: "", // Thêm trường dữ liệu Mẹ cô dâu
   })
+
   useEffect(() => {
     setWeddingInfo({
       invitationText: data?.invitationText,
