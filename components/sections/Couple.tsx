@@ -6,6 +6,24 @@ import FloatingHearts from "../FloatingIcons"
 import { Heart1 } from "../Heart"
 
 const IntroPage = ({ brideData, groomData }: any) => {
+  // const brideData = {
+  //   type: "bride",
+  //   name: "Ngô Việt Hoài",
+  //   imageSrc: "/layout/codau.jpeg",
+  //   fatherName: "NGÔ XUÂN NGHĨA",
+  //   motherName: "TRẦN HỒNG THẮM",
+  //   bio: "Cô gái đến từ Xứ Huế mộng mơ, hiện đang sinh sống và làm việc tại Sài Gòn. Sau khi tốt nghiệp Học viện Báo chí và Tuyên truyền, quyết tâm theo đuổi đam mê làm phóng viên du lịch. Là người hay cười nhưng lại sống nội tâm, thích đọc sách, trồng cây và yêu thiên nhiên. Ngoài ra còn rất thích về với vôi, nuôi mèo và nuôi ước mơ cho cô một vườn trong khỏe sắc.",
+  // }
+
+  // const groomData = {
+  //   type: "groom",
+  //   name: "Hoàng Kiến Văn",
+  //   imageSrc: "/layout/chure.jpeg",
+  //   fatherName: "HOÀNG ANH KIỆT",
+  //   motherName: "NGUYỄN THỊ HOÀI",
+  //   bio: 'Là bác sĩ nha khoa hiện đang công tác tại một phòng khám nha khoa ở Quận 1 thành phố Hồ Chí Minh. Là một người hiền lành và ít nói. Luôn coi trọng tình cảm và yêu thương gia đình. Với anh: "Gia đình là điểm tựa vững chắc nhất và là bến đỗ bình yên không đâu sánh bằng đối với mỗi con người. Đôi luông là nơi tràn ngập sinh yêu thương để ta trở về."',
+  // }
+
   return (
     <section id="couple" className="relative overflow-hidden">
       <FloatingHearts count={30} icons={["💕", "❤️", "🌸"]} />

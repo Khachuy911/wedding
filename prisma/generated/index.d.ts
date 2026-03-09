@@ -294,8 +294,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.19.1
-   * Query Engine version: c2990dca591cba766e3b7ef5d9e8a84796e47ab7
+   * Prisma Client JS version: 6.17.1
+   * Query Engine version: 272a37d34178c2894197e17273bf937f25acdeac
    */
   export type PrismaVersion = {
     client: string
@@ -308,7 +308,6 @@ export namespace Prisma {
    */
 
 
-  export import Bytes = runtime.Bytes
   export import JsonObject = runtime.JsonObject
   export import JsonArray = runtime.JsonArray
   export import JsonValue = runtime.JsonValue
@@ -1308,7 +1307,6 @@ export namespace Prisma {
     avatar: string | null
     address: string | null
     mapUrl: string | null
-    embedUrl: string | null
     father: string | null
     mother: string | null
     bio: string | null
@@ -1336,7 +1334,6 @@ export namespace Prisma {
     avatar: string | null
     address: string | null
     mapUrl: string | null
-    embedUrl: string | null
     father: string | null
     mother: string | null
     bio: string | null
@@ -1364,7 +1361,6 @@ export namespace Prisma {
     avatar: number
     address: number
     mapUrl: number
-    embedUrl: number
     father: number
     mother: number
     bio: number
@@ -1394,7 +1390,6 @@ export namespace Prisma {
     avatar?: true
     address?: true
     mapUrl?: true
-    embedUrl?: true
     father?: true
     mother?: true
     bio?: true
@@ -1422,7 +1417,6 @@ export namespace Prisma {
     avatar?: true
     address?: true
     mapUrl?: true
-    embedUrl?: true
     father?: true
     mother?: true
     bio?: true
@@ -1450,7 +1444,6 @@ export namespace Prisma {
     avatar?: true
     address?: true
     mapUrl?: true
-    embedUrl?: true
     father?: true
     mother?: true
     bio?: true
@@ -1551,7 +1544,6 @@ export namespace Prisma {
     avatar: string | null
     address: string | null
     mapUrl: string | null
-    embedUrl: string | null
     father: string | null
     mother: string | null
     bio: string | null
@@ -1596,7 +1588,6 @@ export namespace Prisma {
     avatar?: boolean
     address?: boolean
     mapUrl?: boolean
-    embedUrl?: boolean
     father?: boolean
     mother?: boolean
     bio?: boolean
@@ -1624,7 +1615,6 @@ export namespace Prisma {
     avatar?: boolean
     address?: boolean
     mapUrl?: boolean
-    embedUrl?: boolean
     father?: boolean
     mother?: boolean
     bio?: boolean
@@ -1652,7 +1642,6 @@ export namespace Prisma {
     avatar?: boolean
     address?: boolean
     mapUrl?: boolean
-    embedUrl?: boolean
     father?: boolean
     mother?: boolean
     bio?: boolean
@@ -1680,7 +1669,6 @@ export namespace Prisma {
     avatar?: boolean
     address?: boolean
     mapUrl?: boolean
-    embedUrl?: boolean
     father?: boolean
     mother?: boolean
     bio?: boolean
@@ -1695,7 +1683,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userName" | "password" | "shortName" | "name" | "dob" | "phone" | "type" | "qrCodeUrl" | "avatar" | "address" | "mapUrl" | "embedUrl" | "father" | "mother" | "bio" | "note" | "title" | "bank" | "account" | "weddingDate" | "weddingTime" | "lunarDate" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userName" | "password" | "shortName" | "name" | "dob" | "phone" | "type" | "qrCodeUrl" | "avatar" | "address" | "mapUrl" | "father" | "mother" | "bio" | "note" | "title" | "bank" | "account" | "weddingDate" | "weddingTime" | "lunarDate" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1713,7 +1701,6 @@ export namespace Prisma {
       avatar: string | null
       address: string | null
       mapUrl: string | null
-      embedUrl: string | null
       father: string | null
       mother: string | null
       bio: string | null
@@ -2161,7 +2148,6 @@ export namespace Prisma {
     readonly avatar: FieldRef<"User", 'String'>
     readonly address: FieldRef<"User", 'String'>
     readonly mapUrl: FieldRef<"User", 'String'>
-    readonly embedUrl: FieldRef<"User", 'String'>
     readonly father: FieldRef<"User", 'String'>
     readonly mother: FieldRef<"User", 'String'>
     readonly bio: FieldRef<"User", 'String'>
@@ -2379,7 +2365,6 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -2398,7 +2383,6 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -3495,7 +3479,6 @@ export namespace Prisma {
      * The data used to create many Customers.
      */
     data: CustomerCreateManyInput | CustomerCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -3514,7 +3497,6 @@ export namespace Prisma {
      * The data used to create many Customers.
      */
     data: CustomerCreateManyInput | CustomerCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -4582,7 +4564,6 @@ export namespace Prisma {
      * The data used to create many Wishes.
      */
     data: WishCreateManyInput | WishCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -4601,7 +4582,6 @@ export namespace Prisma {
      * The data used to create many Wishes.
      */
     data: WishCreateManyInput | WishCreateManyInput[]
-    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
@@ -5654,7 +5634,6 @@ export namespace Prisma {
      * The data used to create many Timelines.
      */
     data: TimelineCreateManyInput | TimelineCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -5673,7 +5652,6 @@ export namespace Prisma {
      * The data used to create many Timelines.
      */
     data: TimelineCreateManyInput | TimelineCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -6701,7 +6679,6 @@ export namespace Prisma {
      * The data used to create many Schedules.
      */
     data: ScheduleCreateManyInput | ScheduleCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -6720,7 +6697,6 @@ export namespace Prisma {
      * The data used to create many Schedules.
      */
     data: ScheduleCreateManyInput | ScheduleCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -6867,9 +6843,6 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -6889,7 +6862,6 @@ export namespace Prisma {
     avatar: 'avatar',
     address: 'address',
     mapUrl: 'mapUrl',
-    embedUrl: 'embedUrl',
     father: 'father',
     mother: 'mother',
     bio: 'bio',
@@ -6968,14 +6940,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
-  };
-
-  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
   export const NullsOrder: {
     first: 'first',
     last: 'last'
@@ -6997,23 +6961,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'String[]'
-   */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -7025,23 +6975,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'UserType[]'
-   */
-  export type ListEnumUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserType[]'>
-    
-
-
-  /**
    * Reference to a field of type 'CustomerType'
    */
   export type EnumCustomerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CustomerType'>
-    
-
-
-  /**
-   * Reference to a field of type 'CustomerType[]'
-   */
-  export type ListEnumCustomerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CustomerType[]'>
     
 
 
@@ -7053,23 +6989,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -7092,7 +7014,6 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"User"> | string | null
     address?: StringNullableFilter<"User"> | string | null
     mapUrl?: StringNullableFilter<"User"> | string | null
-    embedUrl?: StringNullableFilter<"User"> | string | null
     father?: StringNullableFilter<"User"> | string | null
     mother?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
@@ -7120,7 +7041,6 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     mapUrl?: SortOrderInput | SortOrder
-    embedUrl?: SortOrderInput | SortOrder
     father?: SortOrderInput | SortOrder
     mother?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
@@ -7151,7 +7071,6 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"User"> | string | null
     address?: StringNullableFilter<"User"> | string | null
     mapUrl?: StringNullableFilter<"User"> | string | null
-    embedUrl?: StringNullableFilter<"User"> | string | null
     father?: StringNullableFilter<"User"> | string | null
     mother?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
@@ -7179,7 +7098,6 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     mapUrl?: SortOrderInput | SortOrder
-    embedUrl?: SortOrderInput | SortOrder
     father?: SortOrderInput | SortOrder
     mother?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
@@ -7213,7 +7131,6 @@ export namespace Prisma {
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     address?: StringNullableWithAggregatesFilter<"User"> | string | null
     mapUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
-    embedUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     father?: StringNullableWithAggregatesFilter<"User"> | string | null
     mother?: StringNullableWithAggregatesFilter<"User"> | string | null
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -7504,7 +7421,6 @@ export namespace Prisma {
     avatar?: string | null
     address?: string | null
     mapUrl?: string | null
-    embedUrl?: string | null
     father?: string | null
     mother?: string | null
     bio?: string | null
@@ -7532,7 +7448,6 @@ export namespace Prisma {
     avatar?: string | null
     address?: string | null
     mapUrl?: string | null
-    embedUrl?: string | null
     father?: string | null
     mother?: string | null
     bio?: string | null
@@ -7560,7 +7475,6 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    embedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     father?: NullableStringFieldUpdateOperationsInput | string | null
     mother?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7588,7 +7502,6 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    embedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     father?: NullableStringFieldUpdateOperationsInput | string | null
     mother?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7616,7 +7529,6 @@ export namespace Prisma {
     avatar?: string | null
     address?: string | null
     mapUrl?: string | null
-    embedUrl?: string | null
     father?: string | null
     mother?: string | null
     bio?: string | null
@@ -7644,7 +7556,6 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    embedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     father?: NullableStringFieldUpdateOperationsInput | string | null
     mother?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7672,7 +7583,6 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    embedUrl?: NullableStringFieldUpdateOperationsInput | string | null
     father?: NullableStringFieldUpdateOperationsInput | string | null
     mother?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7979,8 +7889,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -7988,14 +7898,13 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8003,14 +7912,13 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8020,15 +7928,15 @@ export namespace Prisma {
 
   export type EnumUserTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8054,7 +7962,6 @@ export namespace Prisma {
     avatar?: SortOrder
     address?: SortOrder
     mapUrl?: SortOrder
-    embedUrl?: SortOrder
     father?: SortOrder
     mother?: SortOrder
     bio?: SortOrder
@@ -8082,7 +7989,6 @@ export namespace Prisma {
     avatar?: SortOrder
     address?: SortOrder
     mapUrl?: SortOrder
-    embedUrl?: SortOrder
     father?: SortOrder
     mother?: SortOrder
     bio?: SortOrder
@@ -8110,7 +8016,6 @@ export namespace Prisma {
     avatar?: SortOrder
     address?: SortOrder
     mapUrl?: SortOrder
-    embedUrl?: SortOrder
     father?: SortOrder
     mother?: SortOrder
     bio?: SortOrder
@@ -8127,8 +8032,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8136,7 +8041,6 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -8145,8 +8049,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8154,7 +8058,6 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
@@ -8163,8 +8066,8 @@ export namespace Prisma {
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8177,8 +8080,8 @@ export namespace Prisma {
 
   export type EnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
     not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserTypeFilter<$PrismaModel>
@@ -8187,8 +8090,8 @@ export namespace Prisma {
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8201,15 +8104,15 @@ export namespace Prisma {
 
   export type EnumCustomerTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.CustomerType | EnumCustomerTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CustomerType[]
+    notIn?: $Enums.CustomerType[]
     not?: NestedEnumCustomerTypeFilter<$PrismaModel> | $Enums.CustomerType
   }
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -8273,8 +8176,8 @@ export namespace Prisma {
 
   export type EnumCustomerTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CustomerType | EnumCustomerTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CustomerType[]
+    notIn?: $Enums.CustomerType[]
     not?: NestedEnumCustomerTypeWithAggregatesFilter<$PrismaModel> | $Enums.CustomerType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCustomerTypeFilter<$PrismaModel>
@@ -8283,8 +8186,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -8489,8 +8392,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8503,8 +8406,8 @@ export namespace Prisma {
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8517,8 +8420,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8528,15 +8431,15 @@ export namespace Prisma {
 
   export type NestedEnumUserTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8546,8 +8449,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8563,8 +8466,8 @@ export namespace Prisma {
 
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -8574,8 +8477,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8591,8 +8494,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -8602,8 +8505,8 @@ export namespace Prisma {
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8616,8 +8519,8 @@ export namespace Prisma {
 
   export type NestedEnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
     not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserTypeFilter<$PrismaModel>
@@ -8626,8 +8529,8 @@ export namespace Prisma {
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8640,15 +8543,15 @@ export namespace Prisma {
 
   export type NestedEnumCustomerTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.CustomerType | EnumCustomerTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CustomerType[]
+    notIn?: $Enums.CustomerType[]
     not?: NestedEnumCustomerTypeFilter<$PrismaModel> | $Enums.CustomerType
   }
 
   export type NestedEnumCustomerTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CustomerType | EnumCustomerTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.CustomerType[] | ListEnumCustomerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.CustomerType[]
+    notIn?: $Enums.CustomerType[]
     not?: NestedEnumCustomerTypeWithAggregatesFilter<$PrismaModel> | $Enums.CustomerType
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCustomerTypeFilter<$PrismaModel>
@@ -8657,8 +8560,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -8673,8 +8576,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -8705,7 +8608,6 @@ export namespace Prisma {
 
   export type WishCreateManyCustomerInputEnvelope = {
     data: WishCreateManyCustomerInput | WishCreateManyCustomerInput[]
-    skipDuplicates?: boolean
   }
 
   export type WishUpsertWithWhereUniqueWithoutCustomerInput = {

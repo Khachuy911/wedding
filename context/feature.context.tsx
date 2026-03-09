@@ -1,5 +1,5 @@
 "use client";
-import { Calendar, Gift, HeartHandshake, Home, Image, MailCheck, MapPin, MessageSquare, Users, type LucideIcon } from 'lucide-react';
+import { Calendar, Gift, HeartHandshake, Home, Image, MailCheck, MessageSquare, Users, type LucideIcon } from 'lucide-react';
 import React, { createContext, useContext, useState } from 'react';
 
 interface NavItem {
@@ -23,7 +23,6 @@ const ALL_NAV_ITEMS: NavItem[] = [
     { name: "Photo Album", href: "/#album", Icon: Image, isOptional: true },
     { name: "Lời chúc", href: "/#wishes", Icon: MessageSquare, isOptional: true },
     { name: "Mừng cưới", href: "/#gifts", Icon: Gift, isOptional: true },
-    { name: "Địa chỉ", href: "/#address", Icon: MapPin, isOptional: true },
 ];
 
 const FeatureContext = createContext<FeatureContextType | undefined>(undefined);

@@ -2,7 +2,6 @@
 
 import Header from "@/components/Header"
 import { MusicToggle } from "@/components/MusicToggle"
-import Address from "@/components/sections/Address"
 import WeddingAlbum from "@/components/sections/Album"
 import Couple from "@/components/sections/Couple"
 import Hero from "@/components/sections/Hero"
@@ -30,10 +29,25 @@ export default function Home() {
     const [couple, setCouple] = useState<false | any>(false)
     const [wishes, setWishes] = useState<false | []>(false)
     const [weddingGift, setWeddingGift] = useState<false | []>(false)
+    const [weddingCard, setWeddingCard] = useState<false | any>(false)
     const [schedules, setSchedules] = useState<false | []>(false)
-    const [address, setAddress] = useState<false | any>(false)
     const [customer, setCustomer] = useState()
 
+    const [weddingInfo, setWeddingInfo] = useState({
+        invitationText: "",
+        bodyText: "",
+        groomName: "",
+        brideName: "",
+        eventTimeLarge: "",
+        eventDay: "",
+        eventDate: "",
+        eventMonthYear: "",
+        lunarDate: "",
+        venueType: "",
+        venueAddress: "",
+        welcomeMessage: "",
+        googleMapsLink: "",
+    })
     const loadData = useCallback(async (newId: string) => {
         try {
             const {
@@ -44,31 +58,15 @@ export default function Home() {
                 wishes,
                 weddingGift,
                 schedules,
-                hero,
-                users
+                hero
             } = (await appWeddingClient.getInfor(newId)).data
             setMedia(albums)
             setTimeLines(timeLine)
             setCouple(couple)
             setWeddingGift(weddingGift)
+            setWeddingCard(customer)
             setWishes(wishes)
             setSchedules(schedules)
-            if (users?.groom && users?.bride) {
-                setAddress({
-                    groom: {
-                        name: users.groom.name,
-                        address: users.groom.address,
-                        mapUrl: users.groom.mapUrl,
-                        embedUrl: users.groom.embedUrl
-                    },
-                    bride: {
-                        name: users.bride.name,
-                        address: users.bride.address,
-                        mapUrl: users.bride.mapUrl,
-                        embedUrl: users.bride.embedUrl
-                    }
-                })
-            }
             if (customer) {
                 setCustomer(customer)
                 if (id) {
@@ -103,11 +101,6 @@ export default function Home() {
                         if (schedules && schedules.length > 0) {
                             isOptional = true
                         }
-                    }
-                    else if (item.href === "/#address") {
-                        if (users?.groom && users?.bride) {
-                            isOptional = true
-                        }
                     } else {
                         isOptional = true
                     }
@@ -135,9 +128,7 @@ export default function Home() {
                 {media && media.length > 0 && <WeddingAlbum images={media} />}
                 {wishes && wishes.length > 0 && <WeddingWishes initialWishes={wishes} />}
                 {weddingGift && <WeddingGift weddingGift={weddingGift} />}
-                {address && <Address groomData={address.groom} brideData={address.bride} />}
                 <MusicToggle />
-
             </main>
         </>
     )
