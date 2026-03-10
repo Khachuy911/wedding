@@ -116,8 +116,8 @@ const WeddingAlbum = ({ images }: { images: string[] }) => {
             trong ngày trọng đại của đời mình 💖
           </motion.p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-            {images.slice(0, 5).map((src, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-6 justify-items-center">
+            {images.slice(0, 10).map((src, i) => (
               <motion.div
                 key={i}
                 variants={itemFadeInRight}
