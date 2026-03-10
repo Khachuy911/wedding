@@ -32,6 +32,20 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
+      <head>
+
+        <meta property="og:title" content="Huy & Liên - Thiệp Cưới Online" />
+
+        <meta property="og:description" content="Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!" />
+
+        <meta property="og:image" content="https://huylien-wedding.vercel.app/1.jpg" />
+
+        <meta property="og:url" content="https://huylien-wedding.vercel.app/" />
+
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+      </head>
       <body>
         <FeatureProvider>
           {children}
