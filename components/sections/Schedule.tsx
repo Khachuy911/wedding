@@ -81,13 +81,13 @@ const WeddingEventsPage = ({ schedules }: { schedules: any[] }) => {
               transition={{ duration: 1, delay: index * 0.2 }}
               className="bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
             >
-              <div className="relative h-56 w-full overflow-hidden">
+              <div className="relative aspect-[4/6] w-full overflow-hidden">
                 <Image
-                  width={64}
-                  height={64}
+                  fill
                   src={event.image}
                   alt={event.title}
-                  className="object-cover w-full h-full transition-transform duration-700 hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 hover:scale-110"
                   unoptimized={true}
                 />
               </div>
