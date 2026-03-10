@@ -143,7 +143,10 @@ const WeddingWishes = ({ initialWishes = [] }: { initialWishes?: Wish[] }) => {
     queryFn: async () => {
       const response = await fetch("/api/infor/wishes")
       if (!response.ok) throw new Error("Failed to fetch")
-      return response.json() as Promise<Wish[]>
+      const data = await response.json()
+      if (data.length === 0) throw new Error("Failed to fetch")
+
+      return data
     },
     placeholderData: initialWishes,
   })
