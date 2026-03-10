@@ -120,8 +120,8 @@ class WeddingClient {
     return this.api.delete(`/api/album?fileName=${fileName}`)
   }
 
-  getInfor(id: string | undefined) {
-    return this.api.get(`/api/infor${id ? '?id=' + id : ""}`)
+  getInfor() {
+    return this.api.get(`/api/infor`)
   }
 }
 

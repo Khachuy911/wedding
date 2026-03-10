@@ -14,11 +14,9 @@ import WeddingWishes from "@/components/sections/WeddingWishes"
 import { useFeatures } from "@/context/feature.context"
 import { appWeddingClient } from "@/lib/ApiClient"
 import dayjs from "dayjs"
-import { useParams } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
 export default function Home() {
     const { setNavItems } = useFeatures();
-    const { id } = useParams()
 
     const [media, setMedia] = useState<string[]>([])
     const [timeLines, setTimeLines] = useState([])
@@ -34,7 +32,7 @@ export default function Home() {
     const [address, setAddress] = useState<false | any>(false)
     const [customer, setCustomer] = useState()
 
-    const loadData = useCallback(async (newId: string) => {
+    const loadData = useCallback(async () => {
         try {
             const {
                 albums,
@@ -46,7 +44,7 @@ export default function Home() {
                 schedules,
                 hero,
                 users
-            } = (await appWeddingClient.getInfor(newId)).data
+            } = (await appWeddingClient.getInfor()).data
             setMedia(albums)
             setTimeLines(timeLine)
             setCouple(couple)
@@ -57,14 +55,12 @@ export default function Home() {
                 setAddress({
                     groom: {
                         name: users.groom.name,
-                        shortName: users.groom.shortName,
                         address: users.groom.address,
                         mapUrl: users.groom.mapUrl,
                         embedUrl: users.groom.embedUrl
                     },
                     bride: {
                         name: users.bride.name,
-                        shortName: users.bride.shortName,
                         address: users.bride.address,
                         mapUrl: users.bride.mapUrl,
                         embedUrl: users.bride.embedUrl
@@ -73,9 +69,6 @@ export default function Home() {
             }
             if (customer) {
                 setCustomer(customer)
-                if (id) {
-                    localStorage.setItem("id", newId)
-                }
             }
             setHeroData(hero)
             setNavItems((pre) => {
@@ -119,11 +112,10 @@ export default function Home() {
 
         } catch {
         }
-    }, [setNavItems, id])
+    }, [setNavItems])
     useEffect(() => {
-        const itemId = (id as string) || localStorage.getItem("id") || ""
-        loadData(itemId)
-    }, [loadData, id])
+        loadData()
+    }, [loadData])
 
     return (
         <>
@@ -135,7 +127,7 @@ export default function Home() {
                 {timeLines && timeLines.length > 0 && <Story storyEvents={timeLines} />}
                 {schedules && schedules.length > 0 && <Schedule schedules={schedules} />}
                 {media && media.length > 0 && <WeddingAlbum images={media} />}
-                {wishes && wishes.length > 0 && <WeddingWishes initialWishes={wishes} />}
+                <WeddingWishes initialWishes={wishes || []} />
                 {weddingGift && <WeddingGift weddingGift={weddingGift} />}
                 {address && <Address groomData={address.groom} brideData={address.bride} />}
                 <MusicToggle />

@@ -1,4 +1,5 @@
 import { FeatureProvider } from "@/context/feature.context";
+import { QueryProvider } from "@/context/query-provider";
 import { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
@@ -13,7 +14,6 @@ export const metadata: Metadata = {
   title: weddingTitle,
   description: weddingDesc,
 
-  // Fix lỗi fb:app_id chuẩn theo tài liệu Meta
   facebook: {
     appId: '100009134251421',
   },
@@ -56,9 +56,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="vi">
       {/* Không chèn <head> thủ công để Next.js tự tối ưu thứ tự thẻ meta */}
       <body>
-        <FeatureProvider>
-          {children}
-        </FeatureProvider>
+        <QueryProvider>
+          <FeatureProvider>
+            {children}
+          </FeatureProvider>
+        </QueryProvider>
         <ToastContainer />
       </body>
     </html>
