@@ -1,21 +1,23 @@
-import { FeatureProvider } from "@/context/feature.context"
-import { Metadata } from "next"
-import { ToastContainer } from "react-toastify"
-import "./globals.css"
+import { FeatureProvider } from "@/context/feature.context";
+import { Metadata } from "next";
+import { ToastContainer } from "react-toastify";
+import "./globals.css";
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://huylien-wedding.vercel.app'),
-  title: "Thiệp cưới online",
-  description: "Trân trọng kính mời bạn đến dự lễ cưới của chúng tôi",
+  title: "Huy & Liên - Thiệp Cưới Online",
+  description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
   openGraph: {
-    title: "Thiệp cưới online",
+    title: "Huy & Liên - Thiệp Cưới Online",
+    description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
     url: 'https://huylien-wedding.vercel.app',
-    description: "Trân trọng kính mời bạn đến dự lễ cưới của chúng tôi",
+    siteName: 'Huy & Liên Wedding',
     images: [
       {
-        url: "/1.jpg",
+        url: "/1.jpg", // Next.js sẽ tự kết hợp với metadataBase thành link tuyệt đối
         width: 1200,
         height: 630,
-        alt: "Ảnh cưới",
+        alt: "Huy & Liên Wedding Card",
       },
     ],
     type: "website",
@@ -23,29 +25,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thiệp cưới online",
-    description: "Trân trọng kính mời bạn đến dự lễ cưới của chúng tôi",
+    title: "Huy & Liên - Thiệp Cưới Online",
+    description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
     images: ["/1.jpg"],
   },
-}
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
-      <head>
-
-        <meta property="og:title" content="Huy & Liên - Thiệp Cưới Online" />
-
-        <meta property="og:description" content="Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!" />
-
-        <meta property="og:image" content="https://huylien-wedding.vercel.app/1.jpg" />
-
-        <meta property="og:url" content="https://huylien-wedding.vercel.app/" />
-
-        <meta property="og:type" content="website" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-      </head>
       <body>
         <FeatureProvider>
           {children}
@@ -53,5 +41,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ToastContainer />
       </body>
     </html>
-  )
+  );
 }
