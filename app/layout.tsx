@@ -8,9 +8,8 @@ export const metadata: Metadata = {
   title: "Huy & Liên - Thiệp Cưới Online",
   description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
 
-  // 1. Thêm fb:app_id vào đây để hết báo lỗi thiếu tài sản
   other: {
-    'fb:app_id': '966242223397117', // Bạn có thể giữ ID mẫu này hoặc thay bằng ID của bạn nếu có
+    'fb:app_id': '100009134251421',
   },
 
   openGraph: {
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Huy & Liên Wedding',
     images: [
       {
-        url: "https://huylien-wedding.vercel.app/1.jpg",
+        url: "https://huylien-wedding.vercel.app/wedding-invitation.jpg",
         width: 1200,
         height: 630,
         alt: "Huy & Liên Wedding Card",
@@ -40,6 +39,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
+      <head>
+        <meta property="fb:app_id" content="100009134251421" />
+      </head>
       <body>
         <FeatureProvider>
           {children}
