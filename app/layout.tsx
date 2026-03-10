@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Huy & Liên Wedding',
     images: [
       {
-        url: "/1.jpg",
+        url: "https://huylien-wedding.vercel.app/1.jpg",
         width: 1200,
         height: 630,
         alt: "Huy & Liên Wedding Card",
