@@ -36,7 +36,6 @@ export interface Context {
   params: Promise<{ id: string }>
 }
 
-
 export const dataLocal = {
   "albums": [
     "/album/B4OvAG52bwUsZAEnQjlq1",
