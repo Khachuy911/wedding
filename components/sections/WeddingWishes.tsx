@@ -146,7 +146,7 @@ const WeddingWishes = ({ initialWishes = [] }: { initialWishes?: Wish[] }) => {
       const data = await response.json()
       if (data.length === 0) throw new Error("Failed to fetch")
 
-      return data
+      return data as Wish[]
     },
     placeholderData: initialWishes,
   })
