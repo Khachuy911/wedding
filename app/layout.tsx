@@ -6,19 +6,21 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL('https://huylien-wedding.vercel.app'),
   title: "Huy & Liên - Thiệp Cưới Online",
-  description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
+  description: "Hành trình yêu thương của chúng mình sẽ bước sang một trang mới. Trân trọng kính mời bạn đến chứng kiến và chia sẻ khoảnh khắc hạnh phúc trong lễ cưới của Huy & Liên!",
 
-  other: {
-    "fb:app_id": "100009134251421",
+  // Sửa fb:app_id bằng thuộc tính 'facebook' có sẵn của Next.js Metadata
+  facebook: {
+    appId: '100009134251421',
   },
+
   openGraph: {
     title: "Huy & Liên - Thiệp Cưới Online",
-    description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
+    description: "Hành trình yêu thương của chúng mình sẽ bước sang một trang mới. Trân trọng kính mời bạn đến chứng kiến và chia sẻ khoảnh khắc hạnh phúc trong lễ cưới của Huy & Liên!",
     url: 'https://huylien-wedding.vercel.app',
     siteName: 'Huy & Liên Wedding',
     images: [
       {
-        url: "https://huylien-wedding.vercel.app/wedding-invitation.jpg",
+        url: "/wedding-invitation.jpg", // Đảm bảo file này có trong thư mục public
         width: 1200,
         height: 630,
         alt: "Huy & Liên Wedding Card",
@@ -31,16 +33,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Huy & Liên - Thiệp Cưới Online",
     description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
-    images: ["/1.jpg"],
+    images: ["/wedding-invitation.jpg"],
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
-      <head>
-        <meta property="fb:app_id" content="100009134251421" />
-      </head>
       <body>
         <FeatureProvider>
           {children}
