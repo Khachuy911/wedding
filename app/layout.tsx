@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://huylien-wedding.vercel.app'),
   title: "Huy & Liên - Thiệp Cưới Online",
   description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
+
+  // 1. Thêm fb:app_id vào đây để hết báo lỗi thiếu tài sản
+  other: {
+    'fb:app_id': '966242223397117', // Bạn có thể giữ ID mẫu này hoặc thay bằng ID của bạn nếu có
+  },
+
   openGraph: {
     title: "Huy & Liên - Thiệp Cưới Online",
     description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
@@ -14,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Huy & Liên Wedding',
     images: [
       {
-        url: "/1.jpg", // Next.js sẽ tự kết hợp với metadataBase thành link tuyệt đối
+        url: "/1.jpg",
         width: 1200,
         height: 630,
         alt: "Huy & Liên Wedding Card",
