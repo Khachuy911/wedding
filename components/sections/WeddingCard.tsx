@@ -154,6 +154,7 @@ const WeddingCard = ({ data }: { data: any }) => {
                 <p className="text-[10px] italic text-stone-500">Chú rể:</p>
                 <p className="text-sm font-bold text-rose-700">{weddingInfo.groomName}</p>
               </div>
+
               <div className="space-y-1">
                 <p className="text-[10px] font-bold uppercase text-rose-900 border-b border-rose-100 pb-1 mb-2">Nhà Gái</p>
                 <p className="text-[11px] leading-tight">Ông: <strong>{weddingInfo.fatherBride}</strong></p>
