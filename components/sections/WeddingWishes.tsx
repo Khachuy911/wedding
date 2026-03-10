@@ -144,11 +144,8 @@ const WeddingWishes = ({ initialWishes = [] }: { initialWishes?: Wish[] }) => {
       const response = await fetch("/api/infor/wishes")
       if (!response.ok) throw new Error("Failed to fetch")
       const data = await response.json()
-      if (data.length === 0) throw new Error("Failed to fetch")
-
       return data as Wish[]
     },
-    placeholderData: initialWishes,
   })
 
   const itemVariants: Variants = useMemo(() => ({
@@ -191,13 +188,9 @@ const WeddingWishes = ({ initialWishes = [] }: { initialWishes?: Wish[] }) => {
                 </div>
               ) : (
                 <AnimatePresence>
-                  {wishes.length === 0 ? (
-                    <p className="text-gray-500 italic text-center py-10">Hãy là người đầu tiên gửi lời chúc! ✨</p>
-                  ) : (
-                    wishes.map((wish) => (
-                      <WishCard key={wish.id} wish={wish} variants={itemVariants} />
-                    ))
-                  )}
+                  {(wishes.length > 0 ? wishes : initialWishes).map((wish) => (
+                    <WishCard key={wish.id} wish={wish} variants={itemVariants} />
+                  ))}
                 </AnimatePresence>
               )}
             </div>
