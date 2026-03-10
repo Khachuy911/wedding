@@ -61,6 +61,7 @@ const CoupleIntroCard: React.FC<CoupleIntroCardProps> = ({
             fill
             className="object-cover"
             sizes="(max-width: 768px) 176px, 208px"
+            unoptimized={true}
           />
           }
           <div className="absolute inset-0 rounded-full ring-2 ring-white/70 ring-offset-4 ring-offset-transparent"></div>

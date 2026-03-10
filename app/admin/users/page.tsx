@@ -464,6 +464,7 @@ const UserModal = ({ isOpen, onClose, user, onChange, onSave }: any) => {
                     height={64}
                     src={user.qrCodeUrl}
                     alt="QR Code"
+                    unoptimized={true}
                     className="w-16 h-16 object-contain border rounded"
                   />
                   <p className="text-sm text-gray-500 truncate">

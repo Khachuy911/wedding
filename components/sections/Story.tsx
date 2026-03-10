@@ -118,7 +118,9 @@ const Story = ({ storyEvents }: { storyEvents: any[] }) => {
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: false }}
             >
-              <Image src="/bird.png" width={100} height={100} alt="vector-img" />
+              <Image src="/bird.png" width={100} height={100} alt="vector-img"
+                unoptimized={true}
+              />
             </motion.div>
           </motion.div>
 

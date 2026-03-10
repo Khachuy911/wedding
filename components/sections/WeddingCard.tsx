@@ -124,7 +124,9 @@ const WeddingCard = ({ data }: { data: any }) => {
               whileHover={{ scale: 1.05 }}
               className="relative w-28 h-28 rounded-full border-4 border-white shadow-lg overflow-hidden"
             >
-              <Image src={"/avatar.jpg"} alt="Wedding" fill className="object-cover" />
+              <Image src={"/avatar.jpg"} alt="Wedding" fill className="object-cover"
+                unoptimized={true}
+              />
             </motion.div>
           </div>
 
