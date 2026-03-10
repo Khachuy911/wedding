@@ -2,7 +2,6 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const WeddingCard = ({ data }: { data: any }) => {
@@ -21,49 +20,27 @@ const WeddingCard = ({ data }: { data: any }) => {
     welcomeMessage: "",
     googleMapsLink: "",
     invitation: "",
-    fatherGroom: "", // Thêm trường dữ liệu Cha chú rể
-    motherGroom: "", // Thêm trường dữ liệu Mẹ chú rể
-    fatherBride: "", // Thêm trường dữ liệu Cha cô dâu
-    motherBride: "", // Thêm trường dữ liệu Mẹ cô dâu
+    fatherGroom: "",
+    motherGroom: "",
+    fatherBride: "",
+    motherBride: "",
   })
+
   useEffect(() => {
-    setWeddingInfo({
-      invitationText: data?.invitationText,
-      bodyText: data?.bodyText,
-      groomName: data?.groomName,
-      brideName: data?.brideName,
-      eventTimeLarge: data?.eventTimeLarge,
-      eventDay: data?.eventDay,
-      eventDate: data?.eventDate,
-      eventMonthYear: data?.eventMonthYear,
-      lunarDate: data?.lunarDate,
-      venueType: data?.venueType,
-      venueAddress: data?.venueAddress,
-      welcomeMessage: data?.welcomeMessage,
-      googleMapsLink: data?.googleMapsLink,
-      invitation: data?.invitation,
-      // Cập nhật các trường mới nếu có trong data
-      fatherGroom: data?.fatherGroom,
-      motherGroom: data?.motherGroom,
-      fatherBride: data?.fatherBride,
-      motherBride: data?.motherBride,
-    })
+    if (data) {
+      setWeddingInfo({ ...data });
+    }
   }, [data])
 
   const fadeIn: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] } },
-  }
-
-  const scaleIn: Variants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   }
 
   return (
     <section
       id="letter"
-      className="relative overflow-hidden min-h-screen" // Đã chỉnh sửa layout cho phù hợp với 2 thiệp
+      className="relative overflow-hidden min-h-screen flex items-center justify-center bg-stone-100"
       style={{
         backgroundImage: `url('/layout/letter')`,
         backgroundSize: "cover",
@@ -71,329 +48,125 @@ const WeddingCard = ({ data }: { data: any }) => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-sm m-0"></div>
-      <div className="p-4 py-20 flex flex-wrap items-center justify-center space-y-12 md:space-x-4 md:space-y-0">
-        <div className="relative z-10 py-3 px-3 w-full max-w-sm text-center bg-white rounded-xl
-        shadow-2xl border border-gray-200 overflow-hidden">
-          <div className="absolute inset-2 border border-gray-300 pointer-events-none rounded-lg"></div>
+      {/* Overlay lớp phủ mịn hơn */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40 backdrop-blur-[2px]"></div>
 
-          {/* Tiêu đề */}
-          <motion.h2
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-lg font-bold text-gray-800 tracking-wider"
-          >
-            {weddingInfo.invitationText}
-          </motion.h2>
+      <div className="relative z-10 container mx-auto px-4 py-16 flex flex-col md:flex-row items-center
+       justify-center gap-8 lg:gap-12 space-y-6 md:space-y-0">
 
-          {/* Đường kẻ chấm */}
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="border-b-2  border-dotted border-gray-400 w-3/4 mx-auto mb-1"
-          >
-            <strong style={{ color: "blue", fontWeight: 400, fontStyle: "italic" }}>
-              {weddingInfo?.invitation}
-            </strong>
-          </motion.div>
+        {/* THIỆP 1: THIỆP MỜI (Phía Trái) */}
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          whileHover="hover"
+          viewport={{ once: true }}
+          className="relative w-full max-w-[380px] bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/50"
+        >
+          {/* Họa tiết trang trí góc */}
+          <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-rose-200 rounded-tl-lg"></div>
+          <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-rose-200 rounded-br-lg"></div>
 
-          {/* Body Text */}
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="max-w-[280px] mx-auto text-sm text-gray-700 leading-relaxed mb-5 uppercase font-medium"
-            style={{ lineHeight: 1.3 }}
-          >
-            <span className="block">
+          <motion.div variants={fadeIn} className="text-center space-y-4">
+            <h2 className="text-sm tracking-[0.3em] font-light text-gray-500 uppercase italic">
+              {"Trân trọng kính mời"}
+            </h2>
+
+            <div className="py-2">
+              <span className="text-rose-800 font-serif italic text-xl border-b border-rose-200 px-6">
+                Bạn
+              </span>
+            </div>
+
+            <p className="text-xs tracking-widest text-gray-600 uppercase leading-relaxed">
               {weddingInfo.bodyText}
-            </span>
-          </motion.p>
-
-          {/* Tên cô dâu & chú rể */}
-          <motion.div
-            variants={scaleIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="mb-2"
-          >
-            <p className="test font-dancing-script text-rose-700">
-              {weddingInfo.groomName}
             </p>
-            <p className="font-playfair text-2xl text-gray-600 my-0.5">&</p>
-            <p className="test font-dancing-script text-rose-700">
-              {weddingInfo.brideName}
-            </p>
-          </motion.div>
 
-          {/* Thời gian */}
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-base text-gray-700 mb-1 tracking-wider"
-          >
-            VÀO LÚC{" "}
-            <span className="text-lg font-bold text-rose-700">{weddingInfo.eventTimeLarge}</span>
-          </motion.p>
-
-          {/* Ngày tháng */}
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="flex justify-center items-center gap-1"
-          >
-            <span className="text-xs text-gray-700 uppercase font-bold tracking-wide border-b border-dotted border-gray-400 pb-0.5">
-              {weddingInfo.eventDay}
-            </span>
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-rose-700 text-white text-2xl font-bold shadow-md -mt-1.5">
-              {weddingInfo.eventDate}
+            <div >
+              <h3 className="test font-dancing-script text-4xl text-rose-700 mb-2">{weddingInfo.groomName}</h3>
+              <span className="font-playfair text-xl text-stone-400">&</span>
+              <h3 className="test font-dancing-script text-4xl text-rose-700 mt-2">{weddingInfo.brideName}</h3>
             </div>
-            <span className="text-xs text-gray-700 uppercase font-bold tracking-wide border-b border-dotted border-gray-400 pb-0.5">
-              {weddingInfo.eventMonthYear}
-            </span>
-          </motion.div>
 
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-xs text-gray-600 italic mb-2"
-          >
-            {weddingInfo.lunarDate}
-          </motion.p>
+            <div className="space-y-2 border-y border-stone-100 ">
+              <p className="text-sm font-medium tracking-widest">VÀO LÚC <span className="text-xl font-serif text-rose-800">10:00</span></p>
 
-          {/* Địa điểm */}
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-left max-w-[280px] mx-auto"
-          >
-            <p className="test text-xl text-rose-700 leading-tight" style={{ fontSize: 28 }}>
-              {weddingInfo.venueType}
-            </p>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              {weddingInfo.venueAddress && <strong className="block text-center" style={{ fontWeight: 500, lineHeight: 1.1 }}>
-                {weddingInfo.venueAddress}
-              </strong>
-              }
-            </p>
-          </motion.div>
+              <div className="flex items-center justify-center gap-4">
+                <div className="h-[1px] w-8 bg-stone-300"></div>
+                <div className="text-center">
+                  <p className="text-[16px] uppercase tracking-tighter text-stone-500">Chủ Nhật</p>
+                  <p className="text-3xl font-serif font-bold text-stone-800">22</p>
+                  <p className="text-[16px] uppercase tracking-tighter text-stone-500">Tháng 03</p>
+                </div>
+                <div className="h-[1px] w-8 bg-stone-300"></div>
+              </div>
+              <p className="text-[11px] text-stone-400 italic">Tức ngày 04/02 Năm Bính Ngọ</p>
+            </div>
 
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-sm italic"
-          >
-            <span style={{ fontWeight: 300 }}>
+            <p className="text-sm font-light italic text-stone-600 pt-4 lg:pt-6 leading-relaxed">
               {weddingInfo.welcomeMessage}
-            </span>
-          </motion.p>
-
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="mt-2"
-          >
-            <Link href={weddingInfo.googleMapsLink || ""} target="_blank" rel="noopener noreferrer">
-              <button className="cursor-pointer flex items-center
-              justify-center mx-auto bg-rose-700 text-white text-xs
-              font-bold py-1.5 px-4 rounded-full shadow-lg
-              hover:bg-rose-800 transition duration-300 transform hover:scale-105">
-                <svg
-                  className="w-3 h-3 mr-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  ></path>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
-                Chỉ Đường
-              </button>
-            </Link>
-          </motion.div>
-        </div>
-
-        <div className="relative z-10 py-3 px-3 w-full max-w-sm text-center bg-white rounded-xl
-        shadow-2xl border border-gray-200 overflow-hidden">
-          <div className="absolute inset-2 border border-gray-300 pointer-events-none rounded-lg"></div>
-
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            // Chỉnh lại kích thước ảnh nhỏ hơn và dùng ảnh mẫu
-            className="mx-auto w-34 h-34 rounded-full overflow-hidden 
-            border-[2px] border-white shadow-[0_0_15px_rgba(0,0,0,0.1)] relative"
-          >
-            <Image
-              src={"/avatar/e01cxc"}
-              alt={"Avatar"}
-              fill
-              className="object-cover"
-              sizes="136px"
-            />
-          </motion.div>
-
-          {/* Tiêu đề: TRÂN TRỌNG KÍNH MỜI */}
-          <motion.h2
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-xl font-bold text-gray-800 tracking-wider"
-          >
-            TRÂN TRỌNG KÍNH MỜI
-          </motion.h2>
-
-          {/* Đường kẻ chấm */}
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="border-b-2 border-dotted border-gray-400 w-3/4 mx-auto mb-1"
-          >
-            <strong style={{ color: "blue", fontWeight: 400, fontStyle: "italic" }}>
-              {weddingInfo?.invitation || ""}
-            </strong>
-          </motion.div>
-
-          {/* Body Text: TỚI DỰ LỄ THÀNH HÔN CỦA 2 ... CHÚNG TÔI */}
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="max-w-[280px] mx-auto text-sm text-gray-700 leading-relaxed uppercase font-medium"
-          >
-            <span className="block" style={{ lineHeight: 1.3 }}>
-              TỚI DỰ LỄ THÀNH HÔN
-              <br />
-              CỦA HAI CHÚNG TÔI
-            </span>
-          </motion.p>
-          {/* Thời gian và Ngày tháng */}
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-base text-gray-700 tracking-wider"
-          >
-            VÀO LÚC{" "}
-            <span className="text-lg font-bold text-rose-700">{weddingInfo.eventTimeLarge}</span>
-            , CHỦ NHẬT
-          </motion.p>
-
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-2xl font-bold text-rose-700"
-          >
-            {`${weddingInfo.eventDate}.${weddingInfo.eventMonthYear}`}
-          </motion.div>
-
-          {/* Ngày âm lịch */}
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-xs text-gray-600 italic mb-2"
-          >
-            {weddingInfo.lunarDate}
-          </motion.p>
-
-          {/* Địa điểm chính: Tại Tư Gia Nhà Trai */}
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-center mx-auto max-w-[280px]"
-          >
-            <p className="test text-rose-700" style={{ fontSize: 28 }}>
-              Tại Tư Gia Nhà Trai
             </p>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              {weddingInfo.venueAddress && <strong className="block text-center" style={{ fontWeight: 500, lineHeight: 1.1 }}>
-                {weddingInfo.venueAddress}
-              </strong>
-              }
-            </p>
+
           </motion.div>
+        </motion.div>
 
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-sm italic"
-          >
-            <span style={{ fontWeight: 300, lineHeight: 1.1 }}>
-              Sự hiện diện của Quý vị
-              <br />
-              là niềm vinh hạnh cho gia đình chúng tôi!
-            </span>
-          </motion.p>  {/* Lời mời */}
+        {/* THIỆP 2: THÔNG TIN CHI TIẾT (Phía Phải) */}
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative w-full max-w-[380px] bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-stone-100"
+        >
+          {/* Avatar trang trí */}
+          <div className="flex justify-center -mt-16 mb-6">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="relative w-28 h-28 rounded-full border-4 border-white shadow-lg overflow-hidden"
+            >
+              <Image src={"/avatar.jpg"} alt="Wedding" fill className="object-cover" />
+            </motion.div>
+          </div>
 
-          {/* Thông tin Cha Mẹ, Cô dâu Chú rể */}
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="flex justify-around text-xs mt-1"
-          >
-            <div className="text-gray-800 text-center">
-              <p className="font-bold">Nhà Trai</p>
-              <p className="font-bold">Ông: {weddingInfo.fatherGroom}</p>
-              <p className="font-bold">Bà: {weddingInfo.motherGroom}</p>
-              <p className="mt-1 italic fontfamily">Chú rể: <span >{weddingInfo.groomName}</span></p>
+          <div className="text-center space-y-6">
+            <h2 className="text-lg font-serif font-bold tracking-wider text-stone-800">TRÂN TRỌNG KÍNH MỜI</h2>
+            <div className="py-2">
+              <span className="text-rose-800 font-serif italic text-xl border-b border-rose-200 px-6">
+                Bạn
+              </span>
             </div>
-            <div className="text-gray-800 text-center ">
-              <p className="font-bold">Nhà Gái</p>
-              <p className="font-bold">Ông: {weddingInfo.fatherBride}</p>
-              <p className="font-bold">Bà: {weddingInfo.motherBride}</p>
-              <p className="mt-1 italic fontfamily" >Cô dâu: <span>{weddingInfo.brideName}</span></p>
+            <div className="space-y-1">
+              <p className="text-xs uppercase tracking-widest text-stone-500">Đến dự lễ thành hôn</p>
+              <p className="text-lg font-serif italic text-rose-800">Của hai chúng tôi</p>
             </div>
-          </motion.div>
 
-        </div>
+            <div className="bg-stone-50 p-4 rounded-xl space-y-2">
+              <p className="text-sm tracking-widest uppercase text-stone-600">Thời gian</p>
+              <p className="text-xl font-bold text-stone-800">13:10 — 22.03.2026</p>
+              <p className="text-[10px] text-stone-400 italic font-light">Sự hiện diện của Quý vị là niềm vinh hạnh cho gia đình!</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-100">
+              <div className="space-y-1">
+                <p className="text-[10px] font-bold uppercase text-rose-900 border-b border-rose-100 pb-1 mb-2">Nhà Trai</p>
+                <p className="text-[11px] leading-tight">Ông: <strong>{weddingInfo.fatherGroom}</strong></p>
+                <p className="text-[11px] leading-tight pb-2">Bà: <strong>{weddingInfo.motherGroom}</strong></p>
+                <p className="text-[10px] italic text-stone-500">Chú rể:</p>
+                <p className="text-sm font-bold text-rose-700">{weddingInfo.groomName}</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-[10px] font-bold uppercase text-rose-900 border-b border-rose-100 pb-1 mb-2">Nhà Gái</p>
+                <p className="text-[11px] leading-tight">Ông: <strong>{weddingInfo.fatherBride}</strong></p>
+                <p className="text-[11px] leading-tight pb-2">Bà: <strong>{weddingInfo.motherBride}</strong></p>
+                <p className="text-[10px] italic text-stone-500">Cô dâu:</p>
+                <p className="text-sm font-bold text-rose-700">{weddingInfo.brideName}</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
-    </section >
+    </section>
   )
 }
 

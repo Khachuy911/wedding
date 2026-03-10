@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: weddingImage,
-        width: 1280, // Kích thước chuẩn giống video YouTube
+        width: 1280,
         height: 720,
         alt: weddingTitle,
       },

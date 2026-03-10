@@ -18,16 +18,24 @@ const QrCard = ({ data = {}, delay = 0 }: { data: any, delay: number }) => {
         {data?.title}
       </h3>
 
-      <div className="relative w-full aspect-square bg-gray-100 rounded-xl overflow-hidden mb-3 border-4 border-white shadow-inner group">
+      <div className="relative w-full aspect-[3/4] bg-white rounded-2xl overflow-hidden mb-4 border border-gray-100 shadow-lg group">
+        {/* Lớp nền mờ nhẹ khi hover */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 z-10" />
+
         <Image
           src={data?.qrCodeUrl}
           alt={`QR Code ${data?.title}`}
           fill
-          className="object-cover p-2 transform group-hover:scale-[1.03] transition duration-500"
+          priority
+          className="object-contain p-3 transform transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 400px"
         />
-        <div className="absolute inset-0 bg-black/5 flex items-center justify-center text-white font-bold opacity-0 group-hover:opacity-100 transition duration-300">
-          <span className="p-1.5 bg-black/70 rounded text-xs">Quét để chuyển khoản</span>
+
+        {/* Overlay hướng dẫn quét */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          <span className="px-3 py-2 bg-black/70 backdrop-blur-sm text-white text-xs font-medium rounded-full shadow-xl">
+            Quét để chuyển khoản
+          </span>
         </div>
       </div>
 

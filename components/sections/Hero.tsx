@@ -1,28 +1,13 @@
 "use client"
 import { motion } from "framer-motion"
-import { toast } from "react-toastify"
 
 import CountdownTimer from "@/components/CountdownTimer"
-import { appWeddingClient } from "@/lib/ApiClient"
 
 import FloatingHearts from "../FloatingIcons"
 import { Heart } from "../Heart"
 
 const Hero = ({ heroData }: { heroData: any }) => {
-  const accept = async (id: string) => {
-    if (!id) {
-      return
-    }
-    try {
-      await appWeddingClient.acceptCustomer(id as string)
-      toast.success("Xác nhận tham dự thành công!")
-    } catch (error: any) {
-      toast.warning(
-        error?.response?.data?.error ||
-        "Lỗi: Không thể xác nhận. Vui lòng đảm bảo bạn đang truy cập bằng đường dẫn thiệp mời đầy đủ!"
-      )
-    }
-  }
+
   return (
     <section
       id="/#"
@@ -109,10 +94,7 @@ const Hero = ({ heroData }: { heroData: any }) => {
             animate={{ opacity: [0.6, 1, 0.6, 1, 0.6] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={() => {
-              const newId = localStorage.getItem("id")
-              if (newId) {
-                accept(newId)
-              }
+              window.open("https://forms.gle/G1At5xYoSJNq4NVz7", "_blank", "noopener,noreferrer");
             }}
           >
             <svg

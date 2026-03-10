@@ -4,33 +4,6 @@ import Image from "next/image"
 import FloatingHearts from "../FloatingIcons"
 
 const WeddingEventsPage = ({ schedules }: { schedules: any[] }) => {
-  const events = [
-    {
-      title: "Lễ Đính Hôn",
-      date: "10:00 - 15/11/2025",
-      address: "Nhà gái - TP. Huế",
-      desc:
-        "Buổi lễ đính hôn được tổ chức trong không khí thân mật, ấm cúng cùng sự hiện diện của gia đình hai bên.",
-      image: "/engagement.jpg",
-    },
-    {
-      title: "Lễ Thành Hôn",
-      date: "08:00 - 30/11/2025",
-      address: "Nhà trai - TP. Hồ Chí Minh",
-      desc:
-        "Khoảnh khắc thiêng liêng khi cô dâu và chú rể chính thức nên duyên vợ chồng, trước sự chứng kiến của người thân và bạn bè.",
-      image: "/wedding.jpg",
-    },
-    {
-      title: "Tiệc Cưới",
-      date: "18:00 - 30/11/2025",
-      address: "Trung tâm tiệc cưới White Palace, Q.Phú Nhuận",
-      desc:
-        "Bữa tiệc tràn ngập niềm vui, âm nhạc và lời chúc phúc dành cho đôi uyên ương trong ngày trọng đại.",
-      image: "/party.jpg",
-    },
-  ]
-
   return (
     <section
       id="wedding-events"
@@ -81,13 +54,13 @@ const WeddingEventsPage = ({ schedules }: { schedules: any[] }) => {
               transition={{ duration: 1, delay: index * 0.2 }}
               className="bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
             >
-              <div className="relative h-56 w-full overflow-hidden">
+              <div className="relative aspect-[4/6] w-full overflow-hidden">
                 <Image
-                  width={64}
-                  height={64}
+                  fill
                   src={event.image}
                   alt={event.title}
-                  className="object-cover w-full h-full transition-transform duration-700 hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
 

@@ -69,7 +69,9 @@ const CountdownTimer = ({ weddingDate }: { weddingDate: string }) => {
   }
 
   if (timeLeft.isOver) {
-    return <div className="text-xl text-white">Đám cưới đã diễn ra!</div>
+    return <div
+      className="text-xl font-light tracking-widest uppercase mb-8 opacity-75"
+    >Huy Liên</div>
   }
 
   const timerUnits = [
