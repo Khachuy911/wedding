@@ -37,13 +37,13 @@ export async function GET(req: NextRequest) {
     }
     const weddingGift = {
         groom: {
-            title: "Nhà Gái",
+            title: "Nhà Trai",
             qrCodeUrl: groom.qrCodeUrl,
             bank: groom.bank,
             account: groom.account
         },
         bride: {
-            title: "Nhà Trai",
+            title: "Nhà Gái",
             qrCodeUrl: bride.qrCodeUrl,
             bank: bride.bank,
             account: bride.account
@@ -65,12 +65,11 @@ export async function GET(req: NextRequest) {
                 .add(Number(time2?.[1]) || 0, "minute").toDate()
         }
     }
-
     const customer = dataCustomer ? {
         ...dataCustomer,
         groomName: groom.shortName,
         brideName: bride.shortName,
-        venueType: (dataCustomer && dataCustomer?.type === "Groom") ? "Tại tư gia nhà gái" : "Tại tư gia nhà trai",
+        venueType: (dataCustomer && dataCustomer?.type === "Groom") ? "Tại tư gia nhà trai" : "Tại tư gia nhà gái",
         venueAddress: (dataCustomer && dataCustomer?.type === "Groom") ? groom.address : bride.address,
         googleMapsLink: (dataCustomer && dataCustomer?.type === "Groom") ? groom.mapUrl : bride.mapUrl,
         fatherBride: bride.father,

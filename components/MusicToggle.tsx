@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 export const MusicToggle: React.FC = () => {
   const audioUrl = "/IDo-911.mp3"
@@ -8,36 +8,36 @@ export const MusicToggle: React.FC = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null)
   const [hasAttemptedPlay, setHasAttemptedPlay] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-
   useEffect(() => {
-    const audio = new Audio(audioUrl)
-    audio.loop = true
-    audioRef.current = audio
+    const audio = new Audio(audioUrl);
+    audio.loop = true;
+    audioRef.current = audio;
 
-    const handlePlay = () => setIsPlaying(true)
-    const handlePause = () => setIsPlaying(false)
-
-    audio.addEventListener("play", handlePlay)
-    audio.addEventListener("pause", handlePause)
-
-    const timeoutId = setTimeout(() => {
-      if (!audio.paused && audioRef.current) {
-        return
+    const enableAudio = async () => {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+        // Gỡ bỏ sự kiện sau khi đã phát thành công
+        window.removeEventListener("touchstart", enableAudio);
+        window.removeEventListener("click", enableAudio);
+        window.removeEventListener("scroll", enableAudio);
+      } catch (error) {
+        console.error("Autoplay vẫn bị chặn:", error);
       }
+    };
 
-      if (buttonRef.current) {
-        buttonRef.current.click()
-      }
-    }, 1000)
+    // Lắng nghe mọi hành động nhỏ nhất của người dùng
+    window.addEventListener("touchstart", enableAudio);
+    window.addEventListener("click", enableAudio);
+    window.addEventListener("scroll", enableAudio); // Thêm sự kiện cuộn trang
 
     return () => {
-      clearTimeout(timeoutId)
-      audio.removeEventListener("play", handlePlay)
-      audio.removeEventListener("pause", handlePause)
-      audio.pause()
-      audioRef.current = null
-    }
-  }, [audioUrl])
+      window.removeEventListener("touchstart", enableAudio);
+      window.removeEventListener("click", enableAudio);
+      window.removeEventListener("scroll", enableAudio);
+      audio.pause();
+    };
+  }, [audioUrl]);
 
   const toggleMusic = async () => {
     const audio = audioRef.current
@@ -51,6 +51,14 @@ export const MusicToggle: React.FC = () => {
       try {
         await audio.play()
       } catch (error) {
+        setTimeout(async () => {
+          try {
+            await audio.play()
+          }
+          catch (error) {
+            console.warn("111", error)
+          }
+        }, 1000);
         console.warn("Trình duyệt đã chặn tự động phát.", error)
         setIsPlaying(false)
       }

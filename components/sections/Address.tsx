@@ -25,7 +25,6 @@ const Address = ({ groomData, brideData }: AddressProps) => {
             window.open(mapUrl, "_blank")
         }
     }
-
     return (
         <section
             id="address"
@@ -100,7 +99,7 @@ const AddressCard = ({ data, title, accentColor, onNavigate }: any) => {
                     {title}
                 </span>
                 <h2 className={`text-3xl font-bold ${isPink ? 'text-rose-800' : 'text-blue-800'}`}>
-                    Gia Đình {data.name}
+                    {isPink ? "Cô Dâu" : "Chú Rể"}  {data.shortName}
                 </h2>
             </div>
 
@@ -135,12 +134,12 @@ const AddressCard = ({ data, title, accentColor, onNavigate }: any) => {
                 <Button
                     onClick={onNavigate}
                     className={`mt-auto w-full py-8 text-lg font-bold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl active:scale-95 ${isPink
-                            ? 'bg-gradient-to-r from-rose-400 to-pink-600 hover:from-rose-500 hover:to-pink-700 text-white'
-                            : 'bg-gradient-to-r from-blue-400 to-indigo-600 hover:from-blue-500 hover:to-indigo-700 text-white'
+                        ? 'bg-gradient-to-r from-rose-400 to-pink-600 hover:from-rose-500 hover:to-pink-700 text-white'
+                        : 'bg-gradient-to-r from-blue-400 to-indigo-600 hover:from-blue-500 hover:to-indigo-700 text-white'
                         }`}
                 >
                     <Navigation className="w-5 h-5 mr-3 animate-pulse" />
-                    Xem đường đi qua Google Maps
+                    Chỉ đường
                 </Button>
             </div>
         </motion.div>

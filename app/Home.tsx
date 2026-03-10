@@ -30,7 +30,6 @@ export default function Home() {
     const [couple, setCouple] = useState<false | any>(false)
     const [wishes, setWishes] = useState<false | []>(false)
     const [weddingGift, setWeddingGift] = useState<false | []>(false)
-    const [weddingCard, setWeddingCard] = useState<false | any>(false)
     const [schedules, setSchedules] = useState<false | []>(false)
     const [address, setAddress] = useState<false | any>(false)
     const [customer, setCustomer] = useState()
@@ -52,19 +51,20 @@ export default function Home() {
             setTimeLines(timeLine)
             setCouple(couple)
             setWeddingGift(weddingGift)
-            setWeddingCard(customer)
             setWishes(wishes)
             setSchedules(schedules)
             if (users?.groom && users?.bride) {
                 setAddress({
                     groom: {
                         name: users.groom.name,
+                        shortName: users.groom.shortName,
                         address: users.groom.address,
                         mapUrl: users.groom.mapUrl,
                         embedUrl: users.groom.embedUrl
                     },
                     bride: {
                         name: users.bride.name,
+                        shortName: users.bride.shortName,
                         address: users.bride.address,
                         mapUrl: users.bride.mapUrl,
                         embedUrl: users.bride.embedUrl

@@ -105,9 +105,9 @@ const Header: React.FC = () => {
             <div className="flex-shrink-0">
               <button
                 onClick={() => router.push(baseHref)}
-                className="flex items-center text-[30px] font-bold text-[#e32b42] focus:outline-none"
+                className="flex items-center text-[30px] font-bold text-[#03c0cc] focus:outline-none"
               >
-                <span className="text-[#03c0cc]">V</span>
+                <span className="text-[#e32b42]">L</span>
                 <Heart className="w-5 h-5 mx-1.5" style={{ color: "#e32b42" }} />H
               </button>
             </div>

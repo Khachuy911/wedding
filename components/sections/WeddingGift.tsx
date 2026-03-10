@@ -86,9 +86,9 @@ const WeddingGift = ({ weddingGift = {} }: { weddingGift: any }) => {
 
         <div className="flex flex-wrap gap-10 justify-center items-center mb-4 ">
 
-          <QrCard data={weddingGift.groom} delay={0.3} />
+          <QrCard data={weddingGift.bride} delay={0.3} />
 
-          <QrCard data={weddingGift.bride} delay={0.4} />
+          <QrCard data={weddingGift.groom} delay={0.4} />
         </div>
 
         <motion.p
