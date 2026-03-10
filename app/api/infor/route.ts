@@ -77,14 +77,6 @@ export async function GET(req: NextRequest) {
         fatherGroom: groom.father,
         motherGroom: groom.mother,
     } : false
-    console.log({
-        albums,
-        timeLine,
-        users,
-        couple,
-        customer, wishes,
-        weddingGift, schedules, hero
-    })
     return NextResponse.json({
         albums,
         timeLine,
