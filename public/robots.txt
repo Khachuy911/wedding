@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://minhquan-store.vercel.app
-
-# Sitemaps
-Sitemap: https://minhquan-store.vercel.app/sitemap.xml
