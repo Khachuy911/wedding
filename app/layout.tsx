@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
 
   other: {
-    'fb:app_id': '100009134251421',
+    "fb:app_id": "100009134251421",
   },
-
   openGraph: {
     title: "Huy & Liên - Thiệp Cưới Online",
     description: "Chào mừng bạn đến với thiệp cưới của Huy và Liên. Sự hiện diện của bạn là niềm hạnh phúc của chúng mình!",
