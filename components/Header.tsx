@@ -3,35 +3,25 @@
 import { useFeatures } from "@/context/feature.context"
 import { ArrowLeft, ArrowRight, Heart, Menu, X } from "lucide-react"
 import Link from "next/link"
-import { useParams, usePathname, useRouter } from "next/navigation"
-import React, { useCallback, useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import DesktopNav from "./DesktopNav"
 
 const Header: React.FC = () => {
-  const { navItems } = useFeatures();
+  const { navItems } = useFeatures()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [active, setActive] = useState("/#")
   const [isMounted, setIsMounted] = useState(false)
+
   const router = useRouter()
   const pathname = usePathname()
-  const params = useParams()
 
-  const baseIdPath = params.id ? `/${params.id}` : ""
-  const baseHref = baseIdPath || "/"
+  const isHashPage = pathname === "/"
 
-  const isHashPage = pathname === "/" || pathname.match(/^\/[^/]+$/)
-
-  const handleLinkClick = (href: string) => {
-    setIsMenuOpen(false)
-
-    const targetHref = href.startsWith("/#") ? baseIdPath + href : href
-    setActive(targetHref)
-    router.push(targetHref)
-  }
-
-  const getClientHashPath = useCallback(() => {
+  const getGetCurrentPath = useCallback(() => {
     if (typeof window !== "undefined") {
       const hash = window.location.hash
+      // Nếu không có hash, trả về /# để khớp với item.href đầu tiên
       return hash ? `/${hash}` : "/#"
     }
     return "/#"
@@ -39,63 +29,83 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     setIsMounted(true)
-    const initialActive = getClientHashPath()
-    setActive(initialActive)
+    const updateActive = () => setActive(getGetCurrentPath())
 
-    const handleHashChange = () => {
-      setActive(getClientHashPath())
-    }
-    window.addEventListener("hashchange", handleHashChange)
-    return () => window.removeEventListener("hashchange", handleHashChange)
-  }, [getClientHashPath])
+    updateActive()
+    window.addEventListener("hashchange", updateActive)
+    return () => window.removeEventListener("hashchange", updateActive)
+  }, [getGetCurrentPath, pathname])
 
-  const getActiveIndex = useCallback(() => {
+  const currentIndex = useMemo(() => {
     if (!isMounted || !isHashPage) return -1
+    const index = navItems.findIndex((item) => item.href === active)
 
-    const currentPath = getClientHashPath()
-
-    const index = navItems.findIndex((item) => item.href === currentPath)
-
-    if (
-      index === -1 &&
-      (currentPath === "/#" || (typeof window !== "undefined" && window.scrollY < 100))
-    ) {
+    // Fallback cho trang chủ
+    if (index === -1 && (active === "/#" || (typeof window !== "undefined" && window.scrollY < 100))) {
       return 0
     }
-    return index >= 0 ? index : -1
-  }, [isMounted, isHashPage, getClientHashPath])
+    return index
+  }, [active, navItems, isMounted, isHashPage])
+
+  // --- LOGIC CUỘN MƯỢT TỐI ƯU ---
+  const scrollToSection = useCallback((targetHref: string) => {
+    // Chuyển đổi "/#about" -> "about", "/#" -> "home"
+    let elementId = targetHref.replace("/#", "").trim()
+    if (!elementId) elementId = "home"
+
+    const element = document.getElementById(elementId)
+
+    if (element) {
+      const yOffset = -80 // Bù chiều cao Header
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset + yOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      })
+    } else if (elementId === "home") {
+      // Trường hợp khẩn cấp nếu không tìm thấy id="home", cuộn lên đỉnh
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }, [])
 
   const handleNavigation = (direction: "prev" | "next") => {
-    if (!isHashPage) return
+    if (!isHashPage || currentIndex === -1) return
 
-    const currentIndex = getActiveIndex()
-    if (currentIndex === -1) return
-
-    const totalItems = navItems.length
     let newIndex = currentIndex
-
     if (direction === "next") {
-      newIndex = Math.min(currentIndex + 1, totalItems - 1)
-    } else if (direction === "prev") {
+      newIndex = Math.min(currentIndex + 1, navItems.length - 1)
+    } else {
       newIndex = Math.max(currentIndex - 1, 0)
     }
 
     if (newIndex !== currentIndex) {
-      let newHref = navItems[newIndex].href
+      const targetHref = navItems[newIndex].href
 
-      if (newHref.startsWith("/#")) {
-        newHref = baseIdPath + newHref
-      } else if (newHref === "/") {
-        newHref = baseHref
+      if (targetHref.startsWith("/#")) {
+        // Cập nhật URL trước với { scroll: false } để tránh nhảy trang
+        router.push(targetHref, { scroll: false })
+        // Thực hiện cuộn mượt sau khi URL đã thay đổi
+        setTimeout(() => scrollToSection(targetHref), 10)
+      } else {
+        router.push(targetHref)
       }
 
-      router.push(newHref)
+      setActive(targetHref)
     }
   }
 
-  const currentIndex = getActiveIndex()
-  const isFirst = currentIndex === 0
-  const isLast = currentIndex === navItems.length - 1
+  const handleLinkClick = (href: string) => {
+    setIsMenuOpen(false)
+    setActive(href)
+    if (href.startsWith("/#") && isHashPage) {
+      scrollToSection(href)
+    }
+  }
+
+  const isFirst = currentIndex <= 0
+  const isLast = currentIndex === navItems.length - 1 || currentIndex === -1
 
   return (
     <>
@@ -104,7 +114,11 @@ const Header: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
               <button
-                onClick={() => router.push(baseHref)}
+                onClick={() => {
+                  router.push("/")
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                  setActive("/#")
+                }}
                 className="flex items-center text-[30px] font-bold text-[#03c0cc] focus:outline-none"
               >
                 <span className="text-[#e32b42]">L</span>
@@ -113,7 +127,8 @@ const Header: React.FC = () => {
             </div>
 
             <nav className="hidden md:block">
-              <DesktopNav baseIdPath={baseIdPath} />
+              {/* Giữ nguyên baseIdPath theo yêu cầu của bạn */}
+              <DesktopNav baseIdPath="1" />
             </nav>
 
             <div className="md:hidden">
@@ -121,14 +136,8 @@ const Header: React.FC = () => {
                 type="button"
                 className="p-2 text-gray-500 hover:text-[#e32b42] focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-expanded={isMenuOpen}
-                aria-label="Toggle menu"
               >
-                {isMenuOpen ? (
-                  <X className="h-7 w-7" aria-hidden="true" />
-                ) : (
-                  <Menu className="h-7 w-7" aria-hidden="true" />
-                )}
+                {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </button>
             </div>
           </div>
@@ -140,21 +149,22 @@ const Header: React.FC = () => {
         >
           <ul className="flex flex-col p-4 space-y-2">
             {navItems.map((item) => {
-              if (!item.isOptional) {
-                return
-              }
-              return <li key={item.name} className="w-full">
-                <Link
-                  href={item.href.startsWith("/#") ? baseIdPath + item.href : item.href}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${item.href === active
-                    ? "text-[#e32b42] font-bold bg-pink-50"
-                    : "text-gray-900 hover:bg-gray-100 hover:text-[#e32b42]"
-                    }`}
-                  onClick={() => handleLinkClick(item.href)}
-                >
-                  {item.name}
-                </Link>
-              </li>
+              if (!item.isOptional) return null
+              return (
+                <li key={item.name} className="w-full">
+                  <Link
+                    href={item.href}
+                    scroll={false}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${item.href === active
+                        ? "text-[#e32b42] font-bold bg-pink-50"
+                        : "text-gray-900 hover:bg-gray-100 hover:text-[#e32b42]"
+                      }`}
+                    onClick={() => handleLinkClick(item.href)}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              )
             })}
           </ul>
         </nav>
@@ -172,15 +182,8 @@ const Header: React.FC = () => {
           <button
             onClick={() => handleNavigation("prev")}
             disabled={isFirst}
-            className={`
-                            cursor-pointer
-                            flex items-center justify-center w-10 h-10 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-4
-                            ${isFirst
-                ? "bg-red-300 text-white cursor-not-allowed opacity-70"
-                : "bg-[#e32b42] text-white hover:bg-red-700 focus:ring-red-400"
-              }
-                        `}
-            aria-label="Previous Section"
+            className={`cursor-pointer flex items-center justify-center w-10 h-10 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 ${isFirst ? "bg-red-300 text-white cursor-not-allowed opacity-70" : "bg-[#e32b42] text-white hover:bg-red-700 focus:ring-red-400"
+              }`}
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
@@ -188,15 +191,8 @@ const Header: React.FC = () => {
           <button
             onClick={() => handleNavigation("next")}
             disabled={isLast}
-            className={`
-                            cursor-pointer
-                            flex items-center justify-center w-10 h-10 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-4
-                            ${isLast
-                ? "bg-red-300 text-white cursor-not-allowed opacity-70"
-                : "bg-[#e32b42] text-white hover:bg-red-700 focus:ring-red-400"
-              }
-                        `}
-            aria-label="Next Section"
+            className={`cursor-pointer flex items-center justify-center w-10 h-10 rounded-full shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 ${isLast ? "bg-red-300 text-white cursor-not-allowed opacity-70" : "bg-[#e32b42] text-white hover:bg-red-700 focus:ring-red-400"
+              }`}
           >
             <ArrowRight className="w-6 h-6" />
           </button>

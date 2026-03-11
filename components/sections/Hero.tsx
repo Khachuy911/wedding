@@ -10,7 +10,7 @@ const Hero = ({ heroData }: { heroData: any }) => {
 
   return (
     <section
-      id="/#"
+      id="home"
       className="relative overflow-hidden"
       style={{
         backgroundImage: `url('/layout/home')`,

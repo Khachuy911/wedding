@@ -15,7 +15,7 @@ interface FeatureContextType {
 }
 
 const ALL_NAV_ITEMS: NavItem[] = [
-    { name: "Home", href: "/", Icon: Home, isOptional: true },
+    { name: "Home", href: "/#", Icon: Home, isOptional: true },
     { name: "Thư mời", href: "/#letter", Icon: MailCheck, isOptional: true },
     { name: "Cặp đôi", href: "/#couple", Icon: Users, isOptional: true },
     { name: "Chuyện tình yêu", href: "/#story", Icon: HeartHandshake, isOptional: true },
