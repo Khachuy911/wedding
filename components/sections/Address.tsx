@@ -53,10 +53,10 @@ const Address = ({ groomData, brideData }: AddressProps) => {
                         <Heart className="w-5 h-5 text-pink-400 fill-pink-400" />
                         <div className="h-[1px] w-12 bg-pink-300"></div>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 bg-clip-text text-transparent italic">
+                    <h1 className="test text-5xl md:text-7xl font-serif font-bold mb-6 bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 bg-clip-text text-transparent italic">
                         Địa Chỉ Buổi Lễ
                     </h1>
-                    <p className="text-gray-600 max-w-xl mx-auto text-lg font-light tracking-wide">
+                    <p className="text-gray-700 max-w-2xl mx-auto mb-12 text-lg italic">
                         Sự hiện diện của quý vị là niềm vinh hạnh lớn nhất của gia đình chúng tôi
                     </p>
                 </motion.div>

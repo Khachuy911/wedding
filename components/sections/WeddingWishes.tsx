@@ -166,7 +166,7 @@ const WeddingWishes = ({ initialWishes = [] }: { initialWishes?: Wish[] }) => {
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-amber-300 bg-clip-text text-transparent drop-shadow-lg"
+          className="test text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-rose-400 to-amber-300 bg-clip-text text-transparent drop-shadow-lg"
         >
           Sổ Lưu Bút
         </motion.h1>
