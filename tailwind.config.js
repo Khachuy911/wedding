@@ -8,15 +8,18 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-          serif: ["Playfair Display", "serif"],
-          script: ["Great Vibes", "cursive"],
+        serif: ["Playfair Display", "serif"],
+        script: ["Great Vibes", "cursive"],
       },
       colors: {
-        "blush-pink": "#FFC0CB", 
-        ivory: "#FFFFF0", 
-        gold: "#FFD700", 
+        "blush-pink": "#FFC0CB",
+        ivory: "#FFFFF0",
+        gold: "#FFD700",
+      },
+      animation: {
+        "spin-slow": "spin 5s linear infinite",
       },
     },
   },
   plugins: [],
-}
+};

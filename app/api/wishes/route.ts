@@ -1,12 +1,27 @@
-import { prisma } from "@/lib/prisma"
-import { generateId } from "@/lib/server-utils"
+import { createClient } from "@supabase/supabase-js"
 import { NextRequest, NextResponse } from "next/server"
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
+)
 
 export async function GET() {
   try {
-    const wishes = await prisma.wish.findMany({
-      orderBy: { createdAt: "desc" },
-    })
+    const { data: wishes, error } = await supabase
+      .from('Wish')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) {
+      console.error('Error fetching wishes:', error)
+      return NextResponse.json(
+        {
+          error: "Không thể tải danh sách lời chúc.",
+        },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({ wishes }, { status: 200 })
   } catch {
@@ -22,7 +37,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { name, desc, customerId = null } = body
+    const { name, desc } = body
 
     if (!name || !desc) {
       return NextResponse.json(
@@ -31,21 +46,24 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    if (customerId && typeof customerId === "string" && customerId.trim() !== "") {
-      const customerExists = await prisma.customer.findUnique({ where: { id: customerId } })
-      if (!customerExists) {
-        return NextResponse.json({ error: "Customer ID không tồn tại." }, { status: 400 })
-      }
-    }
-
-    const newWish = await prisma.wish.create({
-      data: {
-        id: generateId(),
+    const { data: newWish, error } = await supabase
+      .from('Wish')
+      .insert({
         name,
         desc,
-        customerId: customerId || null,
-      },
-    })
+      })
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating wish:', error)
+      return NextResponse.json(
+        {
+          error: "Không thể tạo lời chúc!",
+        },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json(
       {
